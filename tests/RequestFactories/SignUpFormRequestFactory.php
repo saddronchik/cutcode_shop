@@ -2,12 +2,13 @@
 
 namespace Tests\RequestFactories;
 
-use Worksome\RequestFactories\Concerns\HasFactory;
 use Worksome\RequestFactories\RequestFactory;
+use Worksome\RequestFactories\Concerns\HasFactory;
+
 
 class SignUpFormRequestFactory extends RequestFactory
 {
-    use HasFactory;
+//    use HasFactory;
 
     public function definition(): array
     {
