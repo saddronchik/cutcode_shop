@@ -5,17 +5,19 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\brand>
+ * @extends Factory<Brand>
  */
 class BrandFactory extends Factory
 {
 
-    public function definition()
+    public function definition():array
     {
         return [
             'title'=>$this->faker->company(),
+//            'thumbnail'=>$this->faker->fixturesImage('brands','image/brands'),
+            'on_home_page'=>$this->faker->boolean(),
+            'sorting'=>$this->faker->numberBetween(1,999),
 
-            'thumbnail'=>$this->faker->fixturesImage('brands','image/brands')
         ];
     }
 }

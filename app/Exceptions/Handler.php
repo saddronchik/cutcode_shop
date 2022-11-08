@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use function Symfony\Component\String\b;
 
 class Handler extends ExceptionHandler
 {
@@ -47,6 +48,11 @@ class Handler extends ExceptionHandler
             if (app()->bound('sentry')) {
                 app('sentry')->captureException($e);
             }
+        });
+
+        $this->renderable(function (\DomainException $e){
+           flash()->alert($e->getMessage());
+           return back();
         });
     }
 }

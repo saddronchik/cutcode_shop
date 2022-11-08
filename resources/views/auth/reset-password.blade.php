@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <x-form.auth-forms title="Восстановление пароля" action="{{route('password.update')}}"  method="POST">
+    <x-form.auth-forms title="Восстановление пароля" action="{{route('password-reset.handle')}}"  method="POST">
 
         @csrf
 

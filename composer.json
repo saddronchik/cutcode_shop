@@ -35,7 +35,7 @@
             "Support\\": "src/Support/"
         },
         "files": [
-            "app/src/Support/helpers.php"
+            "src/Support/helpers.php"
         ]
     },
     "autoload-dev": {
