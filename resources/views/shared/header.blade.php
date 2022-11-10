@@ -47,7 +47,7 @@
                     >
                         <h5 class="text-body text-xs">Мой профиль</h5>
                         <div class="flex items-center mt-3">
-                            <img src="{{auth()->user()->avatar}}" class="w-11 h-11 rounded-full" alt="Данил Шуцкий">
+                            <img src="{{auth()->user()->avatar}}" class="w-11 h-11 rounded-full" alt="{{auth()->user()->name}}">
                             <span class="ml-3 text-xs md:text-sm font-bold">{{auth()->user()->name}}</span>
                         </div>
                         <div class="mt-4">
@@ -101,4 +101,4 @@
         </div><!-- /.header-inner -->
     </div><!-- /.container -->
 </header>
-ы
+
