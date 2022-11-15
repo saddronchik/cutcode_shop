@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Connection;
 
+use Services\Telegram\TelegramBotApi;
+use Services\Telegram\TelegramBotApiContract;
 use function Clue\StreamFilter\fun;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Model::shouldBeStrict(!app()->isProduction());
 
+        $this->app->bind(TelegramBotApiContract::class, TelegramBotApi::class);
 
         if(app()->isProduction() ){
             // DB::whenQueryingForLongerThan(CarbonInterval::seconds(5), function (Connection $connection) {
