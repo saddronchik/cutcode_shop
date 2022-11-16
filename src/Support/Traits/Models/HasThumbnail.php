@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Traits\Models;
+namespace Support\Traits\Models;
 
 
 use Illuminate\Support\Facades\File;

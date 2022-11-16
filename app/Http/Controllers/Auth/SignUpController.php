@@ -3,22 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ForgotPasswordFormRequest;
-use App\Http\Requests\ResetPasswordFormRequest;
-use App\Http\Requests\SignInFormRequest;
 use App\Http\Requests\SignUpFormRequest;
-use Carbon\Factory;
 use Domain\Auth\Contract\RegisterNewUserContract;
-use Domain\Auth\Models\User;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Console\Application;
-use Illuminate\Contracts\View\View;
+use Domain\Auth\DataTransferObjects\NewUserDTO;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Password;
-use Laravel\Socialite\Facades\Socialite;
 
 class SignUpController extends Controller
 {
@@ -30,12 +18,15 @@ class SignUpController extends Controller
 
     public function handle(SignUpFormRequest $request, RegisterNewUserContract $action):RedirectResponse
     {
+//        $dto = new NewUserDTO(
+//            $request->get('name'),
+//            $request->get('email'),
+//            $request->get('password')
+//        );
 
-        $action(
-            $request->get('name'),
-            $request->get('email'),
-            $request->get('password'),
-        );
+//        NewUserDTO::make('name','email','password');
+
+        $action(NewUserDTO::fromRequest($request));
 
         return redirect()
                 ->intended(route('home'));

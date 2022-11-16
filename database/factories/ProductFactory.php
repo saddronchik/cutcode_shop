@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Brand;
+use Domain\Catalog\Models\Brand;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ProductFactory extends Factory
 {
-
+    protected $model = Product::class;
     public function definition()
     {
         return [
@@ -22,7 +23,7 @@ class ProductFactory extends Factory
 //                storage_path('/app/public/images/products'),
 //
 //            ),
-            'price'=>$this->faker->numberBetween(1000,100000),
+            'price'=>$this->faker->numberBetween(10000,1000000),
             'on_home_page'=>$this->faker->boolean(),
             'sorting'=>$this->faker->numberBetween(1,999),
         ];

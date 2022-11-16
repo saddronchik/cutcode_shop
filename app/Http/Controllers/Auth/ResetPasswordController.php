@@ -9,7 +9,7 @@ use App\Http\Requests\SignInFormRequest;
 use App\Http\Requests\SignUpFormRequest;
 use Carbon\Factory;
 use Domain\Auth\Contract\RegisterNewUserContract;
-use Domain\Auth\Models\User;
+use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Console\Application;

@@ -4,8 +4,9 @@ namespace App\Providers;
 
 use App\Contracts\RouteRegistrar;
 use App\Routing\AppRegistrar;
-use Domain\Auth\Routing\AuthRegistrar;
-use http\Exception\RuntimeException;
+
+use App\Routing\AuthRegistrar;
+use RuntimeException;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -26,6 +27,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/';
 
+//Отвечают за роуты перенапрвляют все вместо файла web
     protected array $registrars = [
         AppRegistrar::class,
         AuthRegistrar::class,

@@ -3,8 +3,9 @@
 namespace App\Models;
 
 
-use App\Traits\Models\HasSlug;
-use App\Traits\Models\HasThumbnail;
+use Support\Casts\PriceCast;
+use Support\Traits\Models\HasSlug;
+use Support\Traits\Models\HasThumbnail;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,6 +25,10 @@ class Product extends Model
         'on_home_page',
         'sorting'
      ];
+
+    protected $casts = [
+      'price'=>PriceCast::class
+    ];
 
     protected function thumbnailDir(): string
     {
