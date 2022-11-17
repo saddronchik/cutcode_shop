@@ -10,6 +10,7 @@ use Domain\Catalog\QueryBuilders\CategoryQueryBuilder;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 /**
@@ -51,7 +52,8 @@ class Category extends Model
 
      }
 
-     public function products(){
+     public function products(): BelongsToMany
+     {
         return $this->belongsToMany(Product::class);
      }
 

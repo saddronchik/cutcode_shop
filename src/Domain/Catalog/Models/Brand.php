@@ -2,8 +2,10 @@
 
 namespace Domain\Catalog\Models;
 
+use App\Models\Product;
 use Domain\Catalog\Collections\BrandCollection;
 use Domain\Catalog\QueryBuilders\BrandQueryBuilder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Support\Traits\Models\HasSlug;
 use Support\Traits\Models\HasThumbnail;
 use Illuminate\Contracts\Database\Query\Builder;
@@ -61,7 +63,7 @@ class Brand extends Model
 
      }
 
-     public function products()
+     public function products(): HasMany
      {
         return $this->hasMany(Product::class);
      }
