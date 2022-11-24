@@ -1,6 +1,9 @@
 <?php
 
+use App\Providers\CatalogServiceProvider;
+use App\Providers\DomainServiceProvider;
 use App\Providers\TestingServiceProvider;
+use App\Providers\ViewServiceProvider;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -196,9 +199,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
 
-        App\Providers\ViewServiceProvider::class,
+        ViewServiceProvider::class,
         TestingServiceProvider::class,
-        App\Providers\DomainServiceProvider::class,
+        DomainServiceProvider::class,
+        CatalogServiceProvider::class,
 
     ],
 

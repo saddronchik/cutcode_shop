@@ -18,6 +18,10 @@ class RefreshCommand extends Command
             return self::FAILURE;
         }
 
+        //при кешировании на главной странице остаются прошлые записи
+
+        $this->call('cache:clear');
+
         Storage::deleteDirectory('public/images/products');
         Storage::deleteDirectory('public/images/brands');
 

@@ -4,6 +4,7 @@
             <div class="header-logo shrink-0">
                 <a href="{{route('home')}}" rel="home">
                     <img src="{{Vite::image('logo.svg')}}" class="w-[120px] xs:w-[148px] md:w-[201px] h-[30px] xs:h-[36px] md:h-[50px]" alt="CutCode">
+{{--                    <img src="" class="w-[120px] xs:w-[148px] md:w-[201px] h-[30px] xs:h-[36px] md:h-[50px]" alt="CutCode">--}}
                 </a>
             </div><!-- /.header-logo -->
             <div class="header-menu grow hidden lg:flex items-center ml-8 mr-8 gap-8">
@@ -18,11 +19,10 @@
                         </svg>
                     </button>
                 </form>
-                <nav class="hidden 2xl:flex gap-8">
-                    <a href="{{route('home')}}" class="text-white hover:text-pink font-bold">Главная</a>
-                    <a href="{{route('catalog')}}" class="text-white hover:text-pink font-bold">Каталог товаров</a>
-                    <a href="#" class="text-white hover:text-pink font-bold">Корзина</a>
-                </nav>
+
+
+                @include('shared.menu')
+
             </div><!-- /.header-menu -->
             <div class="header-actions flex items-center gap-3 md:gap-5">
 
