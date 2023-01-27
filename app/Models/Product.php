@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use App\Jobs\ProductJsonProperties;
 use Domain\Catalog\Models\Brand;
 use Domain\Catalog\Models\Category;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -34,12 +35,30 @@ class Product extends Model
         'thumbnail',
         'on_home_page',
         'sorting',
-        'text'
+        'text',
+        'json_properties'
      ];
 
     protected $casts = [
-      'price'=>PriceCast::class
+      'price'=>PriceCast::class,
+        'json_properties'=>'array'
     ];
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+       static::created(function (Product $product){
+        ProductJsonProperties::dispatch($product)
+        ->delay(now()->addSeconds(10));
+       });
+
+
+
+    }
+
+    private mixed $optionValues;
 
     protected function thumbnailDir(): string
     {
@@ -55,6 +74,12 @@ class Product extends Model
 //            'title' => $this->title,
 //            'text' => $this->text,
 //        ];
+//    }
+
+
+//    public function scopeSorted(Builder $query)
+//    {
+//        sorter()->run($query);
 //    }
 
     public function scopeFiltered(Builder $query)
@@ -100,15 +125,6 @@ class Product extends Model
     }
 
 
-     protected static function boot()
-     {
-        parent::boot();
-
-        static::creating(function(Product $product){
-            $product->slug = $product->slug ?? str($product->title)->slug;
-        });
-
-     }
 
      public function brand(): BelongsTo
      {

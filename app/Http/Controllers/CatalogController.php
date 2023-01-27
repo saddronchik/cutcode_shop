@@ -16,7 +16,7 @@ class CatalogController extends Controller
 {
     public function __invoke(?Category $category): Factory|View|Application
     {
-        //TODO: Закешировать
+        //TODO: замена привычного контроллера на  view-model от Spatie (установить библиотеку)
 
 
         $brands = Brand::query()
@@ -43,7 +43,7 @@ class CatalogController extends Controller
 //            ->paginate(6);
 
         $products = Product::query()
-            ->select(['id','title','slug','price','thumbnail'])
+            ->select(['id','title','slug','price','thumbnail','json_properties'])
             ->when(request('s'),function (Builder $query){
                 $query->whereFullText(['title','text'],request('s'));
             })

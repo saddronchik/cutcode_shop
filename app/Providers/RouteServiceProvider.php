@@ -6,6 +6,7 @@ use App\Contracts\RouteRegistrar;
 use App\Routing\AppRegistrar;
 
 use App\Routing\AuthRegistrar;
+use App\Routing\CartRegistrar;
 use App\Routing\CatalogRegistrar;
 use App\Routing\ProductRegistrar;
 use RuntimeException;
@@ -35,6 +36,7 @@ class RouteServiceProvider extends ServiceProvider
         AuthRegistrar::class,
         CatalogRegistrar::class,
         ProductRegistrar::class,
+        CartRegistrar::class,
     ];
 
     /**
