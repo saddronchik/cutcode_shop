@@ -73,6 +73,13 @@ class CartManager
         $item->delete();
     }
 
+    public function updateStorageId(string $old, string $current):void
+    {
+        Cart::query()
+            ->where('storage_id',$old)
+            ->update($this->storageData($current));
+    }
+
     public function truncate(): void
     {
         $this->get()?->delete();

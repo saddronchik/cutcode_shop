@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Laravel\Socialite\Facades\Socialite;
+use Support\SessionRegenerator;
 use Throwable;
 
 class SocialAuthController extends Controller
@@ -50,7 +51,10 @@ class SocialAuthController extends Controller
             'password'=>bcrypt(str()->random(20)),
         ]);
 
-        auth()->login($user);
+//        auth()->login($user);
+
+        SessionRegenerator::run(fn()=>auth()->login($user));
+
 
         return redirect()->intended(route('home'));
     }
