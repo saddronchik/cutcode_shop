@@ -52,7 +52,11 @@ class Handler extends ExceptionHandler
 
         $this->renderable(function (\DomainException $e){
            flash()->alert($e->getMessage());
-           return back();
+
+
+           return session()->previousUrl()
+               ?back()
+               :redirect()->route('home');
         });
     }
 }

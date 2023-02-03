@@ -8,6 +8,7 @@ use App\Routing\AppRegistrar;
 use App\Routing\AuthRegistrar;
 use App\Routing\CartRegistrar;
 use App\Routing\CatalogRegistrar;
+use App\Routing\OrderRegistrar;
 use App\Routing\ProductRegistrar;
 use RuntimeException;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -34,9 +35,11 @@ class RouteServiceProvider extends ServiceProvider
     protected array $registrars = [
         AppRegistrar::class,
         AuthRegistrar::class,
-        CatalogRegistrar::class,
+        OrderRegistrar::class,
         ProductRegistrar::class,
+        CatalogRegistrar::class,
         CartRegistrar::class,
+        OrderRegistrar::class,
     ];
 
     /**

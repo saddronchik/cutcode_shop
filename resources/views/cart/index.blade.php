@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="py-3">
                                     <h4 class="text-xs sm:text-sm xl:text-md font-bold">
-                                        <a href="product.html" class="inline-block text-white hover:text-pink">{{$item->product->title}}</a>
+                                        <a href="{{route('product',$item->product->slug)}}" class="inline-block text-white hover:text-pink">{{$item->product->title}}</a>
                                     </h4>
 
                                     @if($item->optionValues->isNotEmpty())
